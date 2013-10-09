@@ -1,1 +1,8 @@
 %h3 Welcome ~ index
+
+%h4 All last projects
+- @projects.each do |project|
+  %div
+    %span= project.name
+    %span= project.funding_goal
+    %span= project.funded

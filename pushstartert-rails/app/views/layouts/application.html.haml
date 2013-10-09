@@ -8,7 +8,20 @@
   %body
     %p.notice= notice
     %p.alert= alert
-    %h1 PushStarter
+    %h1
+      = link_to 'PushStarter', root_path
     %h2 Way better than Kickstarter
+    %div
+      - unless user_signed_in?
+        = link_to 'Sign up', new_user_registration_path
+        = link_to 'Sign in', new_user_session_path
+      //- if user_signed_in?
+      //  = link_to 'Token Authentication Example', token_path(auth_token: current_user.authentication_token)
+      - if user_signed_in?
+        %div
+          = current_user.email
+          = link_to 'My info', edit_user_registration_path
+          = link_to 'Sign out', destroy_user_session_path, method: :delete
+          = link_to 'New Project', new_project_path
     %hr
     = yield

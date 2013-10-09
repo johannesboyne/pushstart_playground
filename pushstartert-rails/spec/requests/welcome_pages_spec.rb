@@ -10,4 +10,10 @@ describe "WelcomePages" do
       should have_content("Welcome ~ index")
     end
   end
+
+  describe "check a project" do
+    let(:project) { FactoryGirl.create(:project) }
+    before { visit project_path(project) }
+    it { should have_content(project.name) }
+  end
 end
