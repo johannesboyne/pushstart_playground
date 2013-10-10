@@ -29,12 +29,12 @@
     - else
       %ul
         %li
-          = link_to 'Backup project - 10.00', project_backup_path(@project, 10), method: :patch
+          = link_to 'Backup project - 10.00', backup_project_path(@project, value: 10), method: :patch
         %li
-          = link_to 'Backup project - 20.00', project_backup_path(@project, 20), method: :patch
+          = link_to 'Backup project - 20.00', backup_project_path(@project, value: 20), method: :patch
         %li
-          = link_to 'Backup project - 50.00', project_backup_path(@project, 50), method: :patch
+          = link_to 'Backup project - 50.00', backup_project_path(@project, value: 50), method: :patch
         %li
-          = link_to 'Backup project - 100.00', project_backup_path(@project, 100), method: :patch
+          = link_to 'Backup project - 100.00', backup_project_path(@project, value: 100), method: :patch
 
   = link_to 'Back', projects_path
