@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
   end
 
   def news
-    @projects = Project.find(:all, order: 'created_at')
+    @projects = Project.find(:all, order: 'created_at desc')
     render template: '/projects/feed.rss.builder', layout: false
   end
 
