@@ -8,9 +8,9 @@
   %body
     %p.notice= notice
     %p.alert= alert
-    %h1
-      = link_to 'PushStarter', root_path
-    %h2 Way better than Kickstarter
+    %h1{style: "font-family: 'Lily Script One', cursive; text-decoration: none;"}
+      = link_to 'PushStarter', root_path, {style: "text-decoration: none;"}
+    %h2{style: "font-family: 'Lily Script One', cursive;"} Way better than Kickstarter
     %div
       - unless user_signed_in?
         = link_to 'Sign up', new_user_registration_path

@@ -1,10 +1,12 @@
 PushstartertRails::Application.routes.draw do
-  resources :projects
+  resources :projects do
+    member do
+      patch 'backup'
+    end
+  end
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
 
-  resources :users
-  root :to => "home#index"
+  root to: "home#index"
 
-  patch '/projects/:id/backup/:value', to: 'projects#backup', as: 'project_backup'
 end
