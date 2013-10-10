@@ -61,6 +61,16 @@ class ProjectsController < ApplicationController
     redirect_to @project, notice: 'Project was successfully backed.'
   end
 
+  def funded
+    @projects = Project.where('funding_goal <= funded')
+  end
+
+  def unfreeze
+    set_project
+    @project.unfreeze
+    redirect_to :back
+  end
+
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy

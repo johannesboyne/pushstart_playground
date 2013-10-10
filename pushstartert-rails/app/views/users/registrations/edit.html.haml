@@ -23,7 +23,7 @@
     %i (we need your current password to confirm your changes)
     %br/
     = f.password_field :current_password
-  - if current_user.role == 'admin'
+  - if can? :change_roles, current_user
     = f.collection_select :role, User::ROLES, :to_s, :humanize
   %div= f.submit "Update"
 %h3 Cancel my account

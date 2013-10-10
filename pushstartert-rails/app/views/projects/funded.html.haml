@@ -1,0 +1,11 @@
+%h2 Funded Projects
+- if user_signed_in?
+  %ul
+    - if can? :unfreeze, current_user
+      - @projects.each do |project|
+        %li
+          %strong= project.name
+          %span= project.funding_goal
+          %span= project.funded
+          - if project.freezed?
+            = link_to 'Unfreeze', unfreeze_project_path(project), method: :patch

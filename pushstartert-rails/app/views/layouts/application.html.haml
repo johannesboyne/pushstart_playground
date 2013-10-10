@@ -20,8 +20,13 @@
       - if user_signed_in?
         %div
           = current_user.email
+          %span ||
           = link_to 'My info', edit_user_registration_path
           = link_to 'Sign out', destroy_user_session_path, method: :delete
           = link_to 'New Project', new_project_path
+          %span ||
+          - if can? :unfreeze, current_user
+            = link_to 'Show funded projects', funded_projects_path
+
     %hr
     = yield
