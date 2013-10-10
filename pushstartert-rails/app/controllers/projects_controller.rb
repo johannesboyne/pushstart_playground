@@ -1,5 +1,8 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+
+  # before_action :set_project, only: [:show, :edit, :update, :destroy]
+  # before_action :correct_user, ony: :destroy
 
   # GET /projects
   # GET /projects.json
@@ -24,7 +27,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
+    @project = current_user.projects.build(project_params)
 
     respond_to do |format|
       if @project.save
@@ -61,7 +64,8 @@ class ProjectsController < ApplicationController
     end
   end
 
-  private
+  protected
+
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
@@ -71,4 +75,5 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(:name, :funding_goal, :funded, :state)
     end
+
 end

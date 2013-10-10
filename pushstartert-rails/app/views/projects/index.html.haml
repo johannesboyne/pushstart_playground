@@ -1,0 +1,29 @@
+%h1 Listing projects
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Funding goal
+      %th Funded
+      %th State
+      %th
+      %th
+      %th
+
+  %tbody
+    - @projects.each do |project|
+      %tr
+        %td= project.name
+        %td= project.funding_goal
+        %td= project.funded
+        %td= project.state
+        - if user_signed_in?
+          %td= link_to 'Show', project
+          - if can? :update, project
+            %td= link_to 'Edit', edit_project_path(project)
+            %td= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Project', new_project_path

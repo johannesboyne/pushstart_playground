@@ -3,6 +3,6 @@
 %h4 All last projects
 - @projects.each do |project|
   %div
-    %span= project.name
+    = link_to project.name, project
     %span= project.funding_goal
     %span= project.funded

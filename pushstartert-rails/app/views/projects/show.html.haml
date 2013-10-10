@@ -1,0 +1,39 @@
+%p{id: "notice"}
+  = notice
+
+%p
+  %strong Name
+  = @project.name
+
+%p
+  %strong Funding goal:
+  = @project.funding_goal
+
+%p
+  %strong Funded:
+  = @project.funded
+
+%p
+  %strong State:
+  = @project.state
+
+%p
+  %strong By User:
+  = @project.user.email
+
+%div
+  - if user_signed_in?
+    - if can? :update, @project
+      = link_to 'Edit', edit_project_path(@project) 
+      %span |
+    - else
+      %ul
+        %li
+          = link_to 'Backup project - 10.00'
+        %li
+          = link_to 'Backup project - 20.00'
+        %li
+          = link_to 'Backup project - 50.00'
+        %li
+          = link_to 'Backup project - 100.00'
+  = link_to 'Back', projects_path

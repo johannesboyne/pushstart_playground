@@ -9,6 +9,12 @@ gem 'sqlite3'
 # Use devise for registration / login
 gem 'devise'
 
+# pry
+gem 'pry-rails'
+
+# Cancan
+gem "cancan"
+
 # Use haml
 gem 'haml'
 
