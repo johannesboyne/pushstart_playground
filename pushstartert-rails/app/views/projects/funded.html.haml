@@ -8,4 +8,4 @@
           %span= project.funding_goal
           %span= project.funded
           - if project.freezed?
-            = link_to 'Unfreeze', unfreeze_project_path(project), method: :patch
+            = link_to 'Unfreeze', unfreeze_project_path(project), method: :patch, remote: true

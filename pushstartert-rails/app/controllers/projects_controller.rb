@@ -10,6 +10,11 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
+  def news
+    @projects = Project.find(:all, order: 'created_at')
+    render template: '/projects/feed.rss.builder', layout: false
+  end
+
   # GET /projects/1
   # GET /projects/1.json
   def show
@@ -68,7 +73,11 @@ class ProjectsController < ApplicationController
   def unfreeze
     set_project
     @project.unfreeze
-    redirect_to :back
+    @project.save
+    respond_to do |format|
+      format.json { render action: 'funded' }
+    end
+    # redirect_to :back
   end
 
   # DELETE /projects/1

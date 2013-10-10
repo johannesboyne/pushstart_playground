@@ -6,6 +6,7 @@ PushstartertRails::Application.routes.draw do
     end
     collection do
       get 'funded'
+      get 'news'
     end
   end
 

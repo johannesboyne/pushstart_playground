@@ -15,6 +15,9 @@ gem 'pry-rails'
 # Cancan
 gem "cancan"
 
+# sprockets
+gem 'sprockets-browserify'
+
 # Use haml
 gem 'haml'
 
