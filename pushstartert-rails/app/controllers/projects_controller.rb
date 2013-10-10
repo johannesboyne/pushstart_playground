@@ -54,6 +54,13 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def backup
+    set_project
+    @project.funded += params[:value].to_f
+    @project.save
+    redirect_to @project, notice: 'Project was successfully backed.'
+  end
+
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
